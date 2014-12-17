@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script>
+		if (!Array.prototype.forEach){
+			Array.prototype.forEach = function(fun /*, thisArg */){
+				"use strict";
+				if (this === void 0 || this === null || typeof fun !== "function") throw new TypeError();
+
+				var
+					t = Object(this),
+					len = t.length >>> 0,
+					thisArg = arguments.length >= 2 ? arguments[1] : void 0;
+
+				for (var i = 0; i < len; i++)
+					if (i in t)
+						fun.call(thisArg, t[i], i, t);
+			};
+		}
+    </script>
+  </head>
+  <body>
+    <p>teste teste</p>
+    <iframe src="http://cit007929cps.cit/iframe-test.php" width="100%" scrolling="no"></iframe>
+    <p>teste teste</p>
+	
+	<script src="jquery.min.js"></script>
+    <script src="iframeResizer.min.js"></script>
+	<script>
+		$(document).ready(function() {
+        $('iframe:first').iFrameResize({
+            autoResize: true,
+			log                     : true, 
+			enablePublicMethods: true,
+            callback                : function(messageData){
+                $('p#callback').html('<b>Frame ID:</b> '   + messageData.iframe.id +
+                                    ' <b>Height:</b> '     + messageData.height +
+                                    ' <b>Width:</b> '      + messageData.width +
+                                    ' <b>Event type:</b> ' + messageData.type
+                );
+            }
+        });
+      });
+    </script>
+  </body>
+</html>
+
+
+
