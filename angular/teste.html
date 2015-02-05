@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="test">
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="test.js"></script>
+  </head>
+  <body class="list-group" ng-controller="TestController as test">
+    <header>
+      <h2 class="text-center">Test</h2>
+    </header>
+    <div class="list-group-item ">
+      <input
+        ng-repeat="input in inputs"
+        ng-trim="false"
+        ng-model="input.value"
+        change-focus-on-end
+        key-focus
+        type="tel"
+        novalidate="novalidate"
+        autocomplete="off"
+        maxlength="10"
+        required
+      />
+    </div>
+    {{inputs}} {{testWatch}}
+  </body>
+</html>
